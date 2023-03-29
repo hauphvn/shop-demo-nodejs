@@ -5,7 +5,7 @@ const server = app.listen(PORT, () => {
     console.log('Server start at: ',PORT);
 });
 
-process.on('SIGINT', () => { // Click control + c will show
-    server.close(() => {
-        console.log(`Exit Server Express`)});
-});
+// process.on('SIGINT', () => { // Click control + c will show
+//     server.close(() => {
+//         console.log(`Exit Server Express`)});
+// });

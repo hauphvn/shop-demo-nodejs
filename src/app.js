@@ -13,14 +13,8 @@ app.use(compression());
 require('./dbs/init.mongodb');
 // const {checkOverloadConnection} = require('./helpers/check.connect');
 // checkOverloadConnection();
-//Init routes
-app.get('/',(req, res,next) => {
-    const hello = 'hello';
-    return res.status(200).json({
-        message: 'welcome',
-        // metadata: hello.repeat(900000)
-    });
-});
+// Init router
+app.use('/',require('./routes'));
 //Handling error
 
 module.exports = app;
