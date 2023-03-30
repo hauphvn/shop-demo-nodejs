@@ -12,5 +12,8 @@
 5. npm i helmet --save : Bao ve khoi hack he thong co ban
 6. npm i compression --save : Nen data, save for bang thong
 7. npm i dotenv
+8. npm i bcrypt --save // save password
+9. npm i crypto // generate token
+10. npm i jsonwebtoken --save
 8. VSCode: package mongo snippet
 9. 
