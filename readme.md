@@ -15,5 +15,6 @@
 8. npm i bcrypt --save // save password
 9. npm i crypto // generate token
 10. npm i jsonwebtoken --save
+11. npm i lodash --save
 8. VSCode: package mongo snippet
 9. 

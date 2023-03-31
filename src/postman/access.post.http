@@ -1,1 +1,8 @@
 POST http://localhost:4200/v1/api/shop/signup
+Content-Type: application/json
+
+{
+  "name": "Shop hauphvn",
+  "email":"hauphvn4@gmail.com",
+  "password": "123345"
+}
