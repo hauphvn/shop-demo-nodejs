@@ -1,2 +1,3 @@
-https://www.youtube.com/watch?v=Ha_LFuZ5x1U&ab_channel=TipsJavascript
+https://www.youtube.com/watch?v=hyF1S0nFS7A&ab_channel=TipsJavascript
 Hoc toi phut: 27:50
+https://github.com/anonystick/httpStatusCode/blob/main/statusCodes.js
