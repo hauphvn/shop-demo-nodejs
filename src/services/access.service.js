@@ -7,6 +7,7 @@ const crypto = require('crypto');
 const KeyTokenService = require("../services/keyToken.service");
 const {createTokenPairLv0} = require("../auth/authUtils");
 const {getInfoData} = require("../utils");
+const {ConflictRequestError, BadRequestError} = require("../core/error.response");
 const RoleShop = {
     SHOP: "SHOP",
     WRITER: "WRITER",
@@ -20,10 +21,13 @@ class AccessService {
             // step 1: check email exists
             const holderShop = await shopModel.findOne({email}).lean();
             if (holderShop) {
-                return {
-                    code: "xxxx",
-                    message: "Shop already registered!",
-                };
+                //Level 1:
+                throw new BadRequestError('Error:::: Shop already registered');
+                //Level 0:
+                // return {
+                //     code: "xxxx",
+                //     message: "Shop already registered!",
+                // };
             }
             const pwdHash = await bcrypt.hash(password, 10);
             const newShop = await shopModel.create({
@@ -53,7 +57,6 @@ class AccessService {
                 const publicKey = crypto.randomBytes(64).toString('hex');
                 const privateKey = crypto.randomBytes(64).toString('hex');
 
-                console.log(publicKey, privateKey);
                 // Level 1:
                 // const publicKeyString = KeyTokenService.createKeyToken({
                 //   userId: newShop._id,
@@ -78,15 +81,19 @@ class AccessService {
                 // Level 0:
                 const keyStore = await KeyTokenService.createKeyTokenLv0({userId: newShop._id, publicKey, privateKey})
                 if (!keyStore) {
-                    return {
-                        code: 'xxx',
-                        message: 'key store error'
-                    }
+                    //Level 1:
+                    throw new BadRequestError('Error:::: Key store error');
+
+                    //Level 0
+                    // return {
+                    //     code: 'xxx',
+                    //     message: 'key store error'
+                    // }
                 }
 
                 const tokens = await createTokenPairLv0({userId: newShop._id, email}, publicKey, privateKey);
-                console.log('tokens::', tokens);
                 if (tokens.hasOwnProperty('accessToken')) {
+                    console.log('1111');
                     return {
                         code: 201,
                         metadata: {
