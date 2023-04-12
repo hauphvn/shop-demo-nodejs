@@ -1,9 +1,8 @@
-POST http://localhost:4200/v1/api/shop/signup
+POST http://localhost:4200/v1/api/shop/login
 Content-Type: application/json
 x-api-key:8cb8737f24c57f22e4d740466c39f19a91ad6c5033a89a2e403465c8cb5c6a4892eb64a2769fff52748171a94dba95f37533546b1e83669eb2852c69bde85654
 
 {
-  "name": "Shop hauphvn",
   "email":"hauphvn14@gmail.com",
   "password": "123345"
 }

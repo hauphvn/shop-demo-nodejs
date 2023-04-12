@@ -14,7 +14,7 @@ const RoleShop = {
     EDITOR: "EDITOR",
     ADMIN: "ADMIN",
 };
-
+const shopService = require('./shop.service');
 class AccessService {
     static signUp = async ({name, email, password}) => {
         try {
@@ -93,7 +93,6 @@ class AccessService {
 
                 const tokens = await createTokenPairLv0({userId: newShop._id, email}, publicKey, privateKey);
                 if (tokens.hasOwnProperty('accessToken')) {
-                    console.log('1111');
                     return {
                         code: 201,
                         metadata: {
@@ -121,6 +120,11 @@ class AccessService {
             };
         }
     };
+    static login = async ({email, password}) => {
+        console.log('email111: ', email);
+const foundShop = await shopService.findByEmail({email});
+        console.log(foundShop);
+    }
 }
 
 module.exports = AccessService;
